@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Boxes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+        .container {
+            width: 550px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .box {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: #fff;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+        .box.expanded {
+            border-color: #ff4081;
+            box-shadow: 0 0 10px rgba(255, 64, 129, 0.3);
+        }
+        .box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            position: relative;
+        }
+        .hidden-content {
+            display: none;
+            padding-top: 10px;
+        }
+        .box.expanded .hidden-content {
+            display: block;
+        }
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            width: 48%;
+        }
+        .option-group label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .option-group select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 100%;
+        }
+        .price {
+            font-weight: bold;
+            margin-left: auto;
+        }
+        .total-price {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" onclick="toggleBox(this)">
+            <div class="box-header">
+                <span>1 Unit - 10% Off</span>
+                <div class="price">$10.00 USD</div>
+            </div>
+            <div class="hidden-content">
+                <div class="options">
+                    <div class="option-group">
+                        <label>Size</label>
+                        <select>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label>Colour</label>
+                        <select>
+                            <option>Black</option>
+                            <option>White</option>
+                            <option>Red</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box" onclick="toggleBox(this)">
+            <div class="box-header">
+                <span>2 Unit - 20% Off</span>
+                <div class="price">$18.00 USD</div>
+            </div>
+            <div class="hidden-content">
+                <div class="options">
+                    <div class="option-group">
+                        <label>Size</label>
+                        <select>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label>Colour</label>
+                        <select>
+                            <option>Black</option>
+                            <option>White</option>
+                            <option>Red</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box" onclick="toggleBox(this)">
+            <div class="box-header">
+                <span>3 Unit - 30% Off</span>
+                <div class="price">$24.00 USD</div>
+            </div>
+            <div class="hidden-content">
+                <div class="options">
+                    <div class="option-group">
+                        <label>Size</label>
+                        <select>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label>Colour</label>
+                        <select>
+                            <option>Black</option>
+                            <option>White</option>
+                            <option>Red</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="total-price">Total: <span id="totalAmount">$18.00 USD</span></div>
+        <button class="add-to-cart">+ Add to Cart</button>
+    </div>
+
+    <script>
+        function toggleBox(element) {
+            document.querySelectorAll('.box').forEach(box => {
+                if (box !== element) {
+                    box.classList.remove('expanded');
+                }
+            });
+            element.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
